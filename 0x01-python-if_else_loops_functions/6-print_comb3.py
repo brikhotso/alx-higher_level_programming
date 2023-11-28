@@ -1,7 +1,5 @@
 #!/usr/bin/python3
-output = ""
-for box in range(10):
+for box in range(0, 8):
     for toy in range(box + 1, 10):
-        output += f"{box}{toy}, " if box != 8 or toy != 9 else f"{box}{toy}\n"
-
-print(output, end="", flush=True)
+        print("{:d}{:d}".format(box, toy), end=', ')
+    print("{:d}{:d}".format(box + 1, toy))
