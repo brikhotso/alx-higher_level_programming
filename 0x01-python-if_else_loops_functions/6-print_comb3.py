@@ -1,5 +1,7 @@
 #!/usr/bin/python3
-for box in range(0, 8):
+for box in range(0, 10):
     for toy in range(box + 1, 10):
-        print("{:d}{:d}".format(box, toy), end=', ')
-    print("{:d}{:d}".format(box + 1, toy))
+        if box == 8 and toy == 9:
+            print("{}{}".format(box, toy))
+        else:
+            print("{}{}".format(box, toy), end=", ")
