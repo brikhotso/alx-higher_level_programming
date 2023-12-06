@@ -1,13 +1,51 @@
-#include <Python.h>
 #include <stdio.h>
-
-void print_python_bytes(PyObject *p);
-void print_python_list(PyObject *p);
-void print_hexn(const char *str, int n);
+#include <Python.h>
 
 /**
- * print_python_list - Print python list information
- * @p: Python object pointer
+ * print_python_bytes - Prints bytes information
+ *
+ * @p: Python Object
+ * Return: no return
+ */
+void print_python_bytes(PyObject *p)
+{
+	char *string;
+	long int size, i, limit;
+
+	printf("[.] bytes object info\n");
+	if (!PyBytes_Check(p))
+	{
+		printf("  [ERROR] Invalid Bytes Object\n");
+		return;
+	}
+
+	size = ((PyVarObject *)(p))->ob_size;
+	string = ((PyBytesObject *)p)->ob_sval;
+
+	printf("  size: %ld\n", size);
+	printf("  trying string: %s\n", string);
+
+	if (size >= 10)
+		limit = 10;
+	else
+		limit = size + 1;
+
+	printf("  first %ld bytes:", limit);
+
+	for (i = 0; i < limit; i++)
+		if (string[i] >= 0)
+			printf(" %02x", string[i]);
+		else
+			printf(" %02x", 256 + string[i]);
+
+	printf("\n");
+}
+
+/**
+ * print_python_list - Prints list information
+ *
+ * @p: Python Object
+ * Return: no return
  */
 void print_python_list(PyObject *p)
 {
@@ -28,50 +66,5 @@ void print_python_list(PyObject *p)
 		printf("Element %ld: %s\n", i, ((obj)->ob_type)->tp_name);
 		if (PyBytes_Check(obj))
 			print_python_bytes(obj);
-	}
-}
-
-/**
- * print_hexn - Print hexadecimal representation of a string up to n characters
- * @str: The input string
- * @n: The number of characters to print
- */
-void print_hexn(const char *str, int n)
-{
-	int i = 0;
-
-	for (; i < n - 1; ++i)
-		printf("%02x ", (unsigned char) str[i]);
-
-	printf("%02x", str[i]);
-}
-
-/**
- * print_python_bytes - Print information about a Python bytes object
- * @p: Python object pointer
- */
-void print_python_bytes(PyObject *p)
-{
-	PyBytesObject *string = (PyBytesObject *) p;
-	long int bytes, string_size = 0;
-
-	printf("[.] bytes object info\n");
-	if (PyBytes_Check(string))
-	{
-		string_size = PyBytes_Size(p);
-		bytes = string_size + 1;
-
-		if (bytes > 10)
-			bytes = 10;
-
-		printf("  size: %d\n", string_size);
-		printf("  trying string: %s\n", string->ob_sval);
-		printf("  first %d bytes: ", bytes);
-		print_hexn(string->ob_sval, bytes);
-		printf("\n");
-	}
-	else
-	{
-		printf("  [ERROR] Invalid Bytes Object\n");
 	}
 }
