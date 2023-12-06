@@ -61,8 +61,8 @@ void print_python_bytes(PyObject *p)
 		string_size = PyBytes_Size(p);
 		bytes = string_size + 1;
 
-		if (bytes >= 10)
-			calc_bytes = 10;
+		if (bytes > 10)
+			bytes = 10;
 
 		printf("  size: %d\n", string_size);
 		printf("  trying string: %s\n", string->ob_sval);
