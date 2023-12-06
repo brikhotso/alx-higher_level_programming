@@ -13,7 +13,7 @@ void print_python_bytes(PyObject *p)
 	printf("[.] bytes object info\n");
 	if (!PyBytes_Check(p))
 	{
-		printf("  [ERROR] Invalid PyBytesObject\n");
+		printf("  [ERROR] Invalid Bytes Object\n");
 		return;
 	}
 
