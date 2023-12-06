@@ -1,6 +1,10 @@
 #include <Python.h>
 #include <stdio.h>
 
+void print_python_bytes(PyObject *p);
+void print_python_list(PyObject *p);
+void print_hexn(const char *str, int n);
+
 /**
  * print_python_list - Print python list information
  * @p: Python object pointer
