@@ -28,36 +28,46 @@ void print_python_list(PyObject *p)
 }
 
 /**
+ * print_hexn - Print hexadecimal representation of a string up to n characters
+ * @str: The input string
+ * @n: The number of characters to print
+ */
+void print_hexn(const char *str, int n)
+{
+	int i = 0;
+
+	for (; i < n - 1; ++i)
+		printf("%02x ", (unsigned char) str[i]);
+
+	printf("%02x", str[i]);
+}
+
+/**
  * print_python_bytes - Print information about a Python bytes object
  * @p: Python object pointer
  */
 void print_python_bytes(PyObject *p)
 {
-	long int size = 0, i = 0;
-	char *string_data;
-
-	if (!PyBytes_Check(p))
-	{
-		fprintf(stderr, "Invalid PyBytesObject\n");
-		return;
-	}
-
-	string_data = PyUnicode_AsUTF8(PyObject_Str(p));
-
-	if (string_data != NULL)
-	{
-		size = strlen(string_data);
-	}
+	PyBytesObject *string = (PyBytesObject *) p;
+	long int bytes, string_size = 0;
 
 	printf("[.] bytes object info\n");
-	printf("  [.] Size: %ld\n", size);
-	printf("  [.] trying string: %s\n", string_data);
-
-	printf("  [.] first 10 bytes:");
-	for (i = 0; i < size; ++i)
+	if (PyBytes_Check(string))
 	{
-		if (i < 10)
-			printf(" %02x", (unsigned char)string_data[i]);
+		string_size = PyBytes_Size(p);
+		bytes = string_size + 1;
+
+		if (bytes >= 10)
+			calc_bytes = 10;
+
+		printf("  size: %d\n", string_size);
+		printf("  trying string: %s\n", string->ob_sval);
+		printf("  first %d bytes: ", bytes);
+		print_hexn(string->ob_sval, bytes);
+		printf("\n");
 	}
-	printf("\n");
+	else
+	{
+		printf("  [ERROR] Invalid Bytes Object\n");
+	}
 }
