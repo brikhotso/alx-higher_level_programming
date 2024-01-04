@@ -1,8 +1,7 @@
 #!/usr/bin/python3
 """ Solve N-queens puzzel """
-
-
 import sys
+
 
 def is_safe(board, row, col):
     """
@@ -14,7 +13,7 @@ def is_safe(board, row, col):
     - col: The column to check for queen placement.
 
     Returns:
-    - True if it's safe to place a queen at the given position, False otherwise.
+    - True if it's safe to place a queen, False otherwise.
     """
     for i in range(row):
         if board[i] == col or \
@@ -22,6 +21,7 @@ def is_safe(board, row, col):
            board[i] + i == col + row:
             return False
     return True
+
 
 def print_solution(board):
     """
@@ -32,6 +32,7 @@ def print_solution(board):
     """
     solution = [[i, board[i]] for i in range(len(board))]
     print(solution)
+
 
 def solve_nqueens(n):
     """
@@ -60,6 +61,7 @@ def solve_nqueens(n):
     board = [-1] * n
     solve(board, 0)
 
+
 def solve(board, row):
     """
     Recursively solve the N-Queens problem using backtracking.
@@ -82,6 +84,7 @@ def solve(board, row):
             board[row] = col
             solve(board, row + 1)
             board[row] = -1
+
 
 if __name__ == "__main__":
     if len(sys.argv) != 2:
