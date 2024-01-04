@@ -6,9 +6,9 @@ class Rectangle:
     """
     Class to represent a rectangle.
 
-    Atrributes:
-    number_of_instances (int): number of rectangle instances
-    print_symbol (any): symbol used as string represenation
+    Attributes:
+    - number_of_instances (int): Number of rectangle instances
+    - print_symbol (any): Symbol used as string representation
     """
 
     number_of_instances = 0
