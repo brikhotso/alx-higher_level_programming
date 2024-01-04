@@ -64,24 +64,6 @@ class Rectangle:
             return 0
         return 2 * (self.__width + self.__height)
 
-    def __str__(self):
-        """Return a string representation of the rectangle."""
-        if self.__width == 0 or self.__height == 0:
-            return ""
-        rectangle_str = ""
-        for _ in range(self.__height):
-            rectangle_str += str(self.print_symbol) * self.__width + "\n"
-        return rectangle_str.rstrip()
-
-    def __repr__(self):
-        """Return a string representation of the rectangle."""
-        return "Rectangle({:d}, {:d})".format(self.__width, self.__height)
-
-    def __del__(self):
-        """Print a message when an instance of Rectangle is deleted."""
-        type(self).number_of_instances -= 1
-        print("Bye rectangle...")
-
     @staticmethod
     def bigger_or_equal(rect_1, rect_2):
         """Return the bigger rectangle based on the area."""
@@ -99,3 +81,21 @@ class Rectangle:
     def square(cls, size=0):
         """Return a new Rectangle instance with width == height == size."""
         return cls(size, size)
+
+    def __str__(self):
+        """Return a string representation of the rectangle."""
+        if self.__width == 0 or self.__height == 0:
+            return ""
+        rectangle_str = ""
+        for _ in range(self.__height):
+            rectangle_str += str(self.print_symbol) * self.__width + "\n"
+        return rectangle_str.rstrip()
+
+    def __repr__(self):
+        """Return a string representation of the rectangle."""
+        return "Rectangle({:d}, {:d})".format(self.__width, self.__height)
+
+    def __del__(self):
+        """Print a message when an instance of Rectangle is deleted."""
+        type(self).number_of_instances -= 1
+        print("Bye rectangle...")
