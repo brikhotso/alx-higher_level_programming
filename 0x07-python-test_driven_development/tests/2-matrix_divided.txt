@@ -1,0 +1,100 @@
+"""
+Test cases for the `2-matrix_divided` module.
+
+Using `matrix_divided` function
+==============================
+
+Importing function from the module:
+>>> matrix_divided = __import__('2-matrix_divided').matrix_divided
+
+# Test cases for valid input scenarios
+
+Regular matrix:
+>>> matrix1 = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+>>> matrix_divided(matrix1, 2)
+[[0.5, 1.0, 1.5], [2.0, 2.5, 3.0], [3.5, 4.0, 4.5]]
+
+Matrix with zeros:
+>>> matrix2 = [[0, 0, 0], [0, 0, 0], [0, 0, 0]]
+>>> matrix_divided(matrix2, 5)
+[[0.0, 0.0, 0.0], [0.0, 0.0, 0.0], [0.0, 0.0, 0.0]]
+
+Matrix with one element:
+>>> matrix3 = [[5]]
+>>> matrix_divided(matrix3, 2)
+[[2.5]]
+
+Matrix with floats:
+>>> matrix4 = [[1.5, 2.5, 3.5], [4.5, 5.5, 6.5]]
+>>> matrix_divided(matrix4, 2)
+[[0.75, 1.25, 1.75], [2.25, 2.75, 3.25]]
+
+# Test cases for invalid input scenarios
+
+Non-numeric input in the matrix:
+>>> matrix5 = [["a", 2], [3, 4]]
+>>> matrix_divided(matrix5, 2)
+Traceback (most recent call last):
+    ...
+TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+Matrix rows with different sizes:
+>>> matrix6 = [[1, 2, 3], [4, 5], [6, 7, 8]]
+>>> matrix_divided(matrix6, 2)
+Traceback (most recent call last):
+    ...
+TypeError: Each row of the matrix must have the same size
+
+Dividing by 0:
+>>> matrix7 = [[1, 2], [3, 4]]
+>>> matrix_divided(matrix7, 0)
+Traceback (most recent call last):
+    ...
+ZeroDivisionError: division by zero
+
+Divisor is not a number:
+>>> matrix8 = [[1, 2], [3, 4]]
+>>> matrix_divided(matrix8, "divisor")
+Traceback (most recent call last):
+    ...
+TypeError: div must be a number
+
+Invalid matrices:
+>>> matrix_divided(None, 2)
+Traceback (most recent call last):
+    ...
+TypeError: 'NoneType' object is not iterable
+
+>>> matrix_divided("not a list", 2)
+Traceback (most recent call last):
+    ...
+TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+>>> matrix_divided([], 2)
+[]
+
+>>> matrix_divided([[]], 2)
+[[]]
+
+>>> matrix_divided([[1, 2], [3, 4], "invalid_row"], 2)
+Traceback (most recent call last):
+    ...
+TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+# Invalid dividers
+>>> matrix_divided(matrix1, "invalid_div")
+Traceback (most recent call last):
+    ...
+TypeError: div must be a number
+
+>>> matrix_divided(matrix1, 0)
+Traceback (most recent call last):
+    ...
+ZeroDivisionError: division by zero
+
+infinity
+>>> matrix1 = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+>>> matrix_divided(matrix1, float('inf'))
+[[0.0, 0.0, 0.0], [0.0, 0.0, 0.0], [0.0, 0.0, 0.0]]
+
+"""

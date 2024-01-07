@@ -1,0 +1,46 @@
+"""
+Test cases for the `5-text_indentation` module.
+
+Using `text_indentation` function
+================================
+
+Importing function from the module:
+>>> text_indentation = __import__('5-text_indentation').text_indentation
+
+# Test cases for valid input scenarios
+
+Simple text with '.' at the end
+>>> text_indentation("This is a sentence.")
+This is a sentence.
+
+Text with '?'
+>>> text_indentation("What's your name?")
+What's your name?
+
+Text with ':'
+>>> text_indentation("Please follow these steps:")
+Please follow these steps:
+
+Single sentence:
+>>> text_indentation("First sentence. Second sentence? Third sentence.")
+First sentence.
+<BLANKLINE>
+Second sentence?
+<BLANKLINE>
+Third sentence.
+
+List with colon:
+>>> text_indentation("Here is a list: item1, item2, item3.")
+Here is a list:
+<BLANKLINE>
+item1, item2, item3.
+
+# Test cases for invalid input scenarios
+
+Non-string input:
+>>> text_indentation(123)
+Traceback (most recent call last):
+    ...
+TypeError: text must be a string
+
+"""

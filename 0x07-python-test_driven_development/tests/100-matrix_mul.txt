@@ -1,0 +1,58 @@
+"""
+Test cases for the `100-matrix_mul` module.
+
+Using `matrix_mul` function
+==========================
+
+Importing function from the module:
+>>> matrix_mul = __import__('100-matrix_mul').matrix_mul
+
+# Test cases for valid input scenarios
+
+Valid matrices multiplication:
+>>> matrix_a = [[1, 2], [3, 4]]
+>>> matrix_b = [[5, 6], [7, 8]]
+>>> matrix_mul(matrix_a, matrix_b)
+[[19, 22], [43, 50]]
+
+Valid result with negative numbers:
+>>> matrix_a = [[-1, -2], [-3, -4]]
+>>> matrix_b = [[-5, -6], [-7, -8]]
+>>> matrix_mul(matrix_a, matrix_b)
+[[19, 22], [43, 50]]
+
+# Test cases for invalid input scenarios
+
+Non-numeric elements in matrices:
+>>> matrix_a = [[1, 2], ['a', 4]]
+>>> matrix_b = [[5, 6], [7, 8]]
+>>> matrix_mul(matrix_a, matrix_b)
+Traceback (most recent call last):
+    ...
+TypeError: m_a should contain only integers or floats
+
+Empty matrix:
+>>> matrix_a = [[]]
+>>> matrix_b = [[5, 6], [7, 8]]
+>>> matrix_mul(matrix_a, matrix_b)
+Traceback (most recent call last):
+    ...
+ValueError: m_a can't be empty
+
+Matrices of different sizes:
+>>> matrix_a = [[1, 2, 3], [4, 5, 6]]
+>>> matrix_b = [[7, 8], [9, 10]]
+>>> matrix_mul(matrix_a, matrix_b)
+Traceback (most recent call last):
+    ...
+ValueError: m_a and m_b can't be multiplied
+
+Matrices that cannot be multiplied:
+>>> matrix_a = [[1, 2, 3], [4, 5, 6]]
+>>> matrix_b = [[7, 8]]
+>>> matrix_mul(matrix_a, matrix_b)
+Traceback (most recent call last):
+    ...
+ValueError: m_a and m_b can't be multiplied
+
+"""

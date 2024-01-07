@@ -1,0 +1,94 @@
+"""
+Test cases for the `0-add_integer` module.
+
+Using `add_integer` function
+===========================
+
+Importing function from the module:
+>>> add_integer = __import__('0-add_integer').add_integer
+
+# Test cases for valid input scenarios
+
+Regular integers:
+>>> add_integer(3, 5)
+8
+
+Integer and float:
+>>> add_integer(3, 5.5)
+8
+
+Floats:
+>>> add_integer(2.5, 3.5)
+5
+
+Default value for b:
+>>> add_integer(7)
+105
+
+Negative integers:
+>>> add_integer(-3, 5)
+2
+
+Negative float and integer:
+>>> add_integer(-3.5, 5)
+2
+
+Zero values:
+>>> add_integer(0, 0)
+0
+
+Addition over multiple values:
+>>> add_integer(1, 2, 3, 4, 5)
+Traceback (most recent call last):
+    ...
+TypeError: add_integer() takes from 1 to 2 positional arguments but 5 were given
+
+# Test cases for invalid input scenarios
+
+Non-numeric input for a:
+>>> add_integer("abc", 5)
+Traceback (most recent call last):
+    ...
+TypeError: a must be an integer
+
+Non-numeric input for b:
+>>> add_integer(3, "def")
+Traceback (most recent call last):
+    ...
+TypeError: b must be an integer
+
+Non-numeric input for both a and b:
+>>> add_integer("abc", "def")
+Traceback (most recent call last):
+    ...
+TypeError: a must be an integer
+
+Passing NaN:
+>>> add_integer(float('nan'), 5)
+Traceback (most recent call last):
+    ...
+ValueError: cannot convert float NaN to integer
+
+Passing bool values:
+>>> add_integer(True, False)
+1
+
+No arguments (raising a TypeError):
+>>> add_integer()
+Traceback (most recent call last):
+    ...
+TypeError: add_integer() missing 1 required positional argument: 'a'
+
+Passing a number and a dictionary:
+>>> add_integer(10, {"key": "value"})
+Traceback (most recent call last):
+    ...
+TypeError: b must be an integer
+
+Passing infinity:
+>>> add_integer(float('inf'), 5)
+Traceback (most recent call last):
+    ...
+OverflowError: cannot convert float infinity to integer
+
+"""
