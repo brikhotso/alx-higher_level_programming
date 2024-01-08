@@ -11,6 +11,21 @@ Using `MyList`
 Importing function from the module:
 >>> MyList = __import__('1-my_list').MyList
 
+Check module doctring
+>>> m = __import__('1-my_list').__doc__
+>>> len(m) > 1
+True
+
+check class doctring
+>>> c = __import__('1-my_list').MyList.__doc__
+>>> len(c) > 1
+True
+
+check function docstring
+>>> f = __import__('1-my_list').MyList.print_sorted.__doc__
+>>> len(f) > 1
+True
+
 Check if MyList inherits from list:
 >>> issubclass(MyList, list)
 True
