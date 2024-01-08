@@ -55,4 +55,17 @@ Traceback (most recent call last):
     ...
 ValueError: m_a and m_b can't be multiplied
 
+Missing two arguments
+>>> matrix_mul()
+Traceback (most recent call last):
+    ...
+TypeError: matrix_mul() missing 2 required positional arguments: 'm_a' and 'm_b'
+
+Missing one argument
+>>> matrix_a = [[1, 2], [3, 4]]
+>>> matrix_mul(matrix_a)
+Traceback (most recent call last):
+    ...
+TypeError: matrix_mul() missing 1 required positional argument: 'm_b'
+
 """
