@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 """
 contains a function say_my_name which prints out first and last names
 """
