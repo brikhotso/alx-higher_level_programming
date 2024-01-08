@@ -1,5 +1,5 @@
-€€"""
-Test cases for the `100-lazy_matrix_mul` module.
+"""
+Test cases for the `101-lazy_matrix_mul` module.
 
 Using `lazy_matrix_mul` function
 ==============================
@@ -39,5 +39,17 @@ Matrices with incompatible sizes for multiplication:
 Traceback (most recent call last):
     ...
 ValueError: shapes (2,3) and (2,3) not aligned: 3 (dim 1) != 2 (dim 0)
+
+Missing two arguments
+>>> lazy_matrix_mul()
+Traceback (most recent call last):
+    ...
+TypeError: lazy_matrix_mul() missing 2 required positional arguments: 'm_a' and 'm_b'
+
+Missing one argument
+>>> lazy_matrix_mul(matrix_a)
+Traceback (most recent call last):
+    ...
+TypeError: lazy_matrix_mul() missing 1 required positional argument: 'm_b'
 
 """
