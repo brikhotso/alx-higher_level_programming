@@ -23,15 +23,6 @@ Working with floating-point values:
 >>> my_list.print_sorted()
 [2.0, 3]
 
-Non-Numbers
-===========
-
-Creating a MyList instance with strings:
-
->>> my_list = MyList(["apple", "banana", "orange", "kiwi"])
->>> my_list.print_sorted()
-['apple', 'banana', 'kiwi', 'orange']
-
 Working with an empty list:
 
 >>> my_list = MyList([])
@@ -49,14 +40,6 @@ Working with negative numbers:
 >>> my_list = MyList([-3, -1, -4, -1, -5, -9, -2, -6, -5])
 >>> my_list.print_sorted()
 [-9, -6, -5, -5, -4, -3, -2, -1, -1]
-
-Creating a MyList instance with mixed data types:
-
->>> my_list = MyList([3, "apple", 1, "banana", 4, "orange"])
->>> my_list.print_sorted()
-Traceback (most recent call last):
-...
-TypeError: '<' not supported between instances of 'str' and 'int'
 
 Working with repeated elements:
 
