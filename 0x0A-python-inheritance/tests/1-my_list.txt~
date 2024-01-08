@@ -1,0 +1,65 @@
+"""
+==================================
+ Test cases for '1-my_list' module
+==================================
+
+This module contains doctests for the MyList class.
+
+Using `MyList`
+=============
+
+Importing function from the module:
+>>> MyList = __import__('1-my_list').MyList
+
+Creating a MyList instance with numbers:
+
+>>> my_list = MyList([3, 1, 4, 1, 5, 9, 2, 6, 5])
+>>> my_list.print_sorted()
+[1, 1, 2, 3, 4, 5, 5, 6, 9]
+
+Working with floating-point values:
+
+>>> my_list = MyList([2.0, 3])
+>>> my_list.print_sorted()
+[2.0, 3]
+
+Non-Numbers
+===========
+
+Creating a MyList instance with strings:
+
+>>> my_list = MyList(["apple", "banana", "orange", "kiwi"])
+>>> my_list.print_sorted()
+['apple', 'banana', 'kiwi', 'orange']
+
+Working with an empty list:
+
+>>> my_list = MyList([])
+>>> my_list.print_sorted()
+[]
+
+Creating a MyList instance with a single element:
+
+>>> my_list = MyList([42])
+>>> my_list.print_sorted()
+[42]
+
+Working with negative numbers:
+
+>>> my_list = MyList([-3, -1, -4, -1, -5, -9, -2, -6, -5])
+>>> my_list.print_sorted()
+[-9, -6, -5, -5, -4, -3, -2, -1, -1]
+
+Creating a MyList instance with mixed data types:
+
+>>> my_list = MyList([3, "apple", 1, "banana", 4, "orange"])
+>>> my_list.print_sorted()
+[1, 3, 4, 'apple', 'banana', 'orange']
+
+Working with repeated elements:
+
+>>> my_list = MyList([1, 1, 2, 2, 3, 3])
+>>> my_list.print_sorted()
+[1, 1, 2, 2, 3, 3]
+
+"""

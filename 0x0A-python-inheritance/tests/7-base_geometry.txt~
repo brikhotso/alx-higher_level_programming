@@ -1,0 +1,109 @@
+"""
+==================================
+ Test cases for '7-base_geometry' module
+==================================
+
+This module contains doctests for the BaseGeometry class.
+
+Using `BaseGeometry`
+====================
+
+Importing class from the module:
+>>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
+
+>>> b = BaseGeometry()
+
+Creating an instance of the BaseGeometry class:
+>>> b = BaseGeometry()
+
+Calling area() method on the base geometry class:
+>>> b.area()
+Traceback (most recent call last):
+...
+Exception: area() is not implemented
+
+Validating an integer value with integer_validator:
+
+>>> b.integer_validator("side_length", 5)
+
+Validating a non-integer value with integer_validator:
+
+>>> b.integer_validator("side_length", "invalid")
+Traceback (most recent call last):
+...
+TypeError: side_length must be an integer
+
+Validating a negative value with integer_validator:
+
+>>> b.integer_validator("side_length", -3)
+Traceback (most recent call last):
+...
+ValueError: side_length must be greater than 0
+
+Additional checks for integer_validator:
+
+Checking if integer_validator works with int == 0:
+>>> b.integer_validator("zero_value", 0)
+Traceback (most recent call last):
+...
+ValueError: negative_value must be greater than 0
+
+Checking if integer_validator works with int < 0:
+>>> b.integer_validator("negative_value", -10)
+
+Checking if integer_validator raises TypeError for non-integer types:
+>>> b.integer_validator("bool_value", True)
+Traceback (most recent call last):
+...
+TypeError: bool_value must be an integer
+
+>>> b.integer_validator("tuple_value", (1, 2, 3))
+Traceback (most recent call last):
+...
+TypeError: tuple_value must be an integer
+
+>>> b.integer_validator("string_value", "abc")
+Traceback (most recent call last):
+...
+TypeError: string_value must be an integer
+
+>>> b.integer_validator("dict_value", {"key": "value"})
+Traceback (most recent call last):
+...
+TypeError: dict_value must be an integer
+
+>>> b.integer_validator("float_value", 3.14)
+Traceback (most recent call last):
+...
+TypeError: float_value must be an integer
+
+>>> b.integer_validator("set_value", {1, 2, 3})
+Traceback (most recent call last):
+...
+TypeError: set_value must be an integer
+
+>>> b.integer_validator("byte_value", b'binary')
+Traceback (most recent call last):
+...
+TypeError: byte_value must be an integer
+
+Checking if integer_validator works with no args:
+>>> b.integer_validator()
+Traceback (most recent call last):
+...
+TypeError: integer_validator() missing 2 required positional arguments: 'name' and 'value'
+
+Checking if integer_validator works with 1 arg:
+>>> b.integer_validator("arg1")
+Traceback (most recent call last):
+...
+TypeError: integer_validator() missing 1 required positional argument: 'value'
+
+Checking if integer_validator works with 3 args:
+>>> b.integer_validator("arg1", "arg2", "arg3")
+Traceback (most recent call last):
+...
+TypeError: integer_validator() takes 3 positional arguments but 4 were given
+
+
+"""
