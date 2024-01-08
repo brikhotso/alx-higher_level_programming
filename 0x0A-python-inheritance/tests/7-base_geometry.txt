@@ -11,6 +11,21 @@ Using `BaseGeometry`
 Importing class from the module:
 >>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
 
+Check module doctring
+>>> m = __import__('7-base_geometry').__doc__
+>>> len(m) > 1
+True
+
+check class doctring
+>>> c = __import__('7-base_geometry').BaseGeometry.__doc__
+>>> len(c) > 1
+True
+
+check function docstring
+>>> f = __import__('7-base_geometry').BaseGeometry.integer_validator.__doc__
+>>> len(f) > 1
+True
+
 >>> b = BaseGeometry()
 
 Creating an instance of the BaseGeometry class:
