@@ -68,4 +68,70 @@ Traceback (most recent call last):
     ...
 TypeError: matrix_mul() missing 1 required positional argument: 'm_b'
 
+# Additional Test cases for invalid input scenarios
+
+# m_a is a String and m_b is a List of lists of numbers
+>>> matrix_a = "Invalid"
+>>> matrix_b = [[5, 6], [7, 8]]
+>>> matrix_mul(matrix_a, matrix_b)
+Traceback (most recent call last):
+    ...
+TypeError: m_a must be a list
+
+m_a is a List of lists of numbers and m_b is a String
+>>> matrix_a = [[1, 2], [3, 4]]
+>>> matrix_b = "Invalid"
+>>> matrix_mul(matrix_a, matrix_b)
+Traceback (most recent call last):
+    ...
+TypeError: m_b must be a list
+
+m_a is a List of integers and m_b is a List of lists of numbers
+>>> matrix_a = [1, 2, 3]
+>>> matrix_b = [[5, 6], [7, 8]]
+>>> matrix_mul(matrix_a, matrix_b)
+Traceback (most recent call last):
+    ...
+TypeError: m_a must be a list of lists
+
+m_a is a List of lists of numbers and m_b is a List of integers
+>>> matrix_a = [[1, 2], [3, 4]]
+>>> matrix_b = [5, 6]
+>>> matrix_mul(matrix_a, matrix_b)
+Traceback (most recent call last):
+    ...
+TypeError: m_b must be a list of lists
+
+m_a is a List of lists of numbers and m_b is an Empty List
+>>> matrix_a = [[1, 2], [3, 4]]
+>>> matrix_b = []
+>>> matrix_mul(matrix_a, matrix_b)
+Traceback (most recent call last):
+    ...
+ValueError: m_b can't be empty
+
+m_a is a List of lists of numbers and m_b is a List of lists of not numbers
+>>> matrix_a = [[1, 2], [3, 4]]
+>>> matrix_b = [['a', 'b'], [1, 2]]
+>>> matrix_mul(matrix_a, matrix_b)
+Traceback (most recent call last):
+    ...
+TypeError: m_b should contain only integers or floats
+
+m_a is a List of lists of numbers with various sizes and m_b is a List of lists of numbers
+>>> matrix_a = [[1, 2], [3, 4, 5]]
+>>> matrix_b = [[1, 2], [3, 4]]
+>>> matrix_mul(matrix_a, matrix_b)
+Traceback (most recent call last):
+    ...
+TypeError: each row of m_a must be of the same size
+
+m_a is a List of lists of numbers and m_b is a List of lists of numbers with various sizes
+>>> matrix_a = [[1, 2], [3, 4]]
+>>> matrix_b = [[1, 2, 3], [4, 5]]
+>>> matrix_mul(matrix_a, matrix_b)
+Traceback (most recent call last):
+    ...
+TypeError: each row of m_b must be of the same size
+
 """
