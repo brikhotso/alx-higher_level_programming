@@ -11,6 +11,10 @@ Using `MyList`
 Importing function from the module:
 >>> MyList = __import__('1-my_list').MyList
 
+Check if MyList inherits from list:
+>>> issubclass(MyList, list)
+True
+
 Creating a MyList instance with numbers:
 
 >>> my_list = MyList([3, 1, 4, 1, 5, 9, 2, 6, 5])
@@ -46,5 +50,33 @@ Working with repeated elements:
 >>> my_list = MyList([1, 1, 2, 2, 3, 3])
 >>> my_list.print_sorted()
 [1, 1, 2, 2, 3, 3]
+
+Testing if 'append' works:
+>>> my_list = MyList([1, 2, 3])
+>>> my_list.append(4)
+>>> my_list.print_sorted()
+[1, 2, 3, 4]
+
+Testing with too many arguments:
+>>> my_list = MyList([1, 2, 3])
+>>> my_list.append(4, 5)
+Traceback (most recent call last):
+...
+TypeError: append() takes exactly one argument (2 given)
+
+Testing reverse order:
+>>> my_list = MyList([3, 2, 1])
+>>> my_list.print_sorted()
+[1, 2, 3]
+
+Checking the type of MyList instance:
+>>> type(my_list) == MyList
+True
+
+Handling NaN, NULL, and None objects:
+>>> my_list = MyList([NaN, NULL, None])
+Traceback (most recent call last):
+...
+NameError: name 'NaN' is not defined
 
 """
