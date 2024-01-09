@@ -5,6 +5,7 @@ using JSON representation
 """
 import json
 
+
 def save_to_json_file(my_obj, filename):
     """Define save_to_json_file"""
     with open(filename, "w") as file:
