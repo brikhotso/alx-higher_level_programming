@@ -1,9 +1,8 @@
 #!/usr/bin/python3
 """Reads stdin line by line and computes metrics"""
-import sys
 
 
-def print_status(size, status_codes):
+def print_stats(size, status_codes):
     """ Print statistics based on the accumulated data."""
     print("File size: {}".format(size))
     for key in sorted(status_codes):
