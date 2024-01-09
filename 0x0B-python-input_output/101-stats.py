@@ -12,14 +12,13 @@ def print_status(lines):
     """
     counter = 0
     size = 0
-    file_size = 0
     status_codes = {"200": 0, "301": 0, "400": 0, "401": 0,
                     "403": 0, "404": 0, "405": 0, "500": 0}
     for line in lines:
-        arts = line.split()
+        parts = line.split()
         try:
-            size += int(line[-1])
-            code = line[-2]
+            size += int(parts[-1])
+            code = parts[-2]
             status_codes[code] += 1
         except(ValueError, IndexError):
             continue
