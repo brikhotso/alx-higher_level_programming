@@ -3,7 +3,13 @@
 
 
 def print_stats(size, status_codes):
-    """ Print statistics based on the accumulated data."""
+    """
+    Print statistics based on the accumulated data.
+
+    Parameters:
+    - size (int): Total file size.
+    - status_codes (dict): Dictionary containing counts of each status code.
+    """
     print("File size: {}".format(size))
     for key in sorted(status_codes):
         print("{}: {}".format(key, status_codes[key]))
