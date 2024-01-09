@@ -4,6 +4,6 @@
 
 def read_file(filename=""):
     """define function taht reads text file and print it to stdout"""
-    with open(filename, "r") as file:
+    with open(filename, encoding="UTF8") as file:
         content = file.read()
-        print(content)
+        print(content, end="")
