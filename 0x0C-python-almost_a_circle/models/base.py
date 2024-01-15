@@ -2,6 +2,8 @@
 """Contains a class Bass with a functin for managing id attributes"""
 import json
 import csv
+import os
+import turtle
 
 
 class Base:
@@ -182,3 +184,45 @@ class Base:
     def convert_value(cls, value):
         """Convert the value from CSV to the appropriate type."""
         return int(value) if value.isdigit() else value
+
+    @staticmethod
+    def draw(list_rectangles, list_squares):
+        """
+        Opens a window and draw Rectangles and Squares using Turtle graphics.
+
+        Args:
+            list_rectangles (list): A list of Rectangle instances.
+            list_squares (list): A list of Square instances.
+
+        Returns:
+            None
+        """
+        def draw_shape(pen, x, y, width, height, color):
+            pen.penup()
+            pen.goto(x, y)
+            pen.pendown()
+            pen.color("black", color)
+            pen.begin_fill()
+
+            for _ in range(2):
+                pen.forward(width)
+                pen.left(90)
+                pen.forward(height)
+                pen.left(90)
+
+            pen.end_fill()
+
+        screen = turtle.Screen()
+        screen.bgcolor("green")
+
+        pen = turtle.Turtle()
+        pen.speed(2)
+
+        for rect in list_rectangles:
+            draw_shape(pen, rect.x, rect.y, rect.width, rect.height, "white")
+
+        for square in list_squares:
+            draw_shape(pen, square.x, square.y, square.size,
+                       square.size, "pink")
+
+        turtle.exitonclick()
