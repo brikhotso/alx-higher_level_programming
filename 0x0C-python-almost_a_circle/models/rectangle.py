@@ -29,7 +29,6 @@ class Rectangle(Base):
         """
         super().__init__(id)
 
-        # Validate and set initial attributes
         self.check_positive_integer("width", width)
         self.check_positive_integer("height", height)
         self.check_non_negative_integer("x", x)
