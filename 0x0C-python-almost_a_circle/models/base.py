@@ -23,7 +23,7 @@ class Base:
 
         Args:
             id (int): If provided, assigns the provided ID to the instance.
-                Otherwise, generates a new ID based on the current value of __nb_objects.
+                Otherwise, generates a new ID based.
 
         Returns:
             None
@@ -133,7 +133,8 @@ class Base:
         from models.square import Square
         if list_objs is not None:
             if cls is Rectangle:
-                list_objs = [[o.id, o.width, o.height, o.x, o.y] for o in list_objs]
+                list_objs = [[o.id, o.width, o.height, o.x, o.y]
+                             for o in list_objs]
             else:
                 list_objs = [[o.id, o.size, o.x, o.y] for o in list_objs]
         with open('{}.csv'.format(cls.__name__), 'w', newline='',
@@ -161,7 +162,8 @@ class Base:
                     d = {"id": row[0], "width": row[1], "height": row[2],
                          "x": row[3], "y": row[4]}
                 else:
-                    d = {"id": row[0], "size": row[1], "x": row[2], "y": row[3]}
+                    d = {"id": row[0], "size": row[1],
+                         "x": row[2], "y": row[3]}
                 ret.append(cls.create(**d))
         return ret
 
@@ -178,6 +180,7 @@ class Base:
             None
         """
         import turtle
+
         def draw_shape(pen, x, y, width, height, color):
             pen.penup()
             pen.goto(x, y)
