@@ -2,7 +2,6 @@
 """Contains a class Bass with a functin for managing id attributes"""
 import json
 import csv
-import os
 import turtle
 
 
