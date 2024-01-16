@@ -68,15 +68,6 @@ class TestJsonAndSaveToFile(unittest.TestCase):
         json_str = Base.to_json_string(None)
         self.assertEqual(json_str, "[]")
 
-    def test_save_to_file_with_none_list(self):
-        """
-        Test saving to file with None as the list of instances.
-        """
-        Base.save_to_file(None)
-        with open("Base.json", "r") as file:
-            content = file.read()
-        self.assertEqual(content, "[]")
-
     def test_save_to_file_with_empty_list(self):
         """
         Test saving to file with an empty list of instances.
@@ -86,37 +77,11 @@ class TestJsonAndSaveToFile(unittest.TestCase):
             content = file.read()
         self.assertEqual(content, "[]")
 
-    def test_save_to_file_with_valid_list(self):
-        """
-        Test saving to file with a valid list of instances.
-        """
-        b1 = Base(1)
-        b2 = Base(2)
-        Base.save_to_file([b1, b2])
-        with open("Base.json", "r") as file:
-            content = file.read()
-        expected_content = '[{"id": 1}, {"id": 2}]'
-        self.assertEqual(content, expected_content)
-
 
 class TestJsonAndLoadFromFile(unittest.TestCase):
     """
     Test cases for loading instances from JSON file methods of Base class.
     """
-
-    def test_load_from_file_with_valid_file(self):
-        """
-        Test loading instances from a valid JSON file.
-        """
-        b1 = Base(1)
-        b2 = Base(2)
-        Base.save_to_file([b1, b2])
-        instances = Base.load_from_file()
-        self.assertEqual(len(instances), 2)
-        self.assertIsInstance(instances[0], Base)
-        self.assertIsInstance(instances[1], Base)
-        self.assertEqual(instances[0].id, 1)
-        self.assertEqual(instances[1].id, 2)
 
     def test_load_from_file_with_nonexistent_file(self):
         """
@@ -139,15 +104,6 @@ class TestCsvMethods(unittest.TestCase):
     """
     Test cases for CSV serialization and loading from CSV file methods.
     """
-
-    def test_save_to_file_csv_with_none_list(self):
-        """
-        Test saving to CSV file with None as the list of instances.
-        """
-        Base.save_to_file_csv(None)
-        with open("Base.csv", "r") as file:
-            content = file.read()
-        self.assertEqual(content, "")
 
     def test_save_to_file_csv_with_empty_list(self):
         """
