@@ -7,6 +7,8 @@ Contains unit tests for the Rectangle class and its related methods.
 
 import unittest
 import os
+import contextlib
+from io import StringIO
 from models.base import Base
 from models.rectangle import Rectangle
 
@@ -15,6 +17,17 @@ class TestRectangle(unittest.TestCase):
     """
     Test cases for the Rectangle class and its methods.
     """
+
+    def test_display_one_arg(self):
+        r = Rectangle(5, 1, 2, 4, 7)
+        with self.assertRaises(TypeError):
+            r.display(1)
+
+    def test_display_width_height(self):
+        r = Rectangle(2, 3, 0, 0, 0)
+        with contextlib.redirect_stdout(StringIO()) as capture:
+            r.display()
+        self.assertEqual(capture.getvalue(), "##\n##\n##\n")
 
     def test_create_instance_with_id(self):
         """
@@ -98,6 +111,93 @@ class TestRectangle(unittest.TestCase):
         r.update(width=15, height=8, x=4, y=1)
         self.assertEqual(r.to_dictionary(), {'id': 10, 'width': 15,
                                              'height': 8, 'x': 4, 'y': 1})
+
+    def test_create_instance_with_negative_x_y(self):
+        """
+        Test creating an instance of Rectangle with negative x and y values.
+        """
+        with self.assertRaises(ValueError):
+            Rectangle(5, 10, -1, -2)
+
+    def test_create_instance_with_missing_arguments(self):
+        """
+        Test creating an instance of Rectangle with missing arguments.
+        """
+        with self.assertRaises(TypeError):
+            Rectangle(1)
+
+    def test_create_instance_with_extra_argument(self):
+        """
+        Test creating an instance of Rectangle with an extra argument.
+        """
+        with self.assertRaises(TypeError):
+            Rectangle(1, 2, 3, 4, 5, 6)
+
+    def test_create_instance_with_invalid_argument_types(self):
+        """
+        Test creating an instance of Rectangle with invalid argument types.
+        """
+        with self.assertRaises(TypeError):
+            Rectangle(1, "2")
+
+        with self.assertRaises(TypeError):
+            Rectangle(1, 2, "3")
+
+        with self.assertRaises(TypeError):
+            Rectangle(1, 2, 3, "4")
+
+    def test_create_instance_with_negative_width_height(self):
+        """
+        Test creating an instance of Rectangle with negative width and height.
+        """
+        with self.assertRaises(ValueError):
+            Rectangle(1, 2, -3)
+
+        with self.assertRaises(ValueError):
+            Rectangle(1, 2, 3, -4)
+
+    def test_create_method_in_rectangle(self):
+        """
+        Test create method in Rectangle class.
+        """
+        r = Rectangle.create(**{'id': 89, 'width': 1, 'height': 2, 'x': 3,
+                                'y': 4})
+        self.assertEqual(r.to_dictionary(), {'id': 89, 'width': 1, 'height': 2,
+                                             'x': 3, 'y': 4})
+
+    def test_save_to_file_with_none(self):
+        """
+        Test saving to file with None in Rectangle.
+        """
+        with self.assertRaises(TypeError):
+            Rectangle(None)
+
+    def test_save_to_file_with_empty_list(self):
+        """
+        Test saving to file with an empty list in Rectangle.
+        """
+        Rectangle.save_to_file([])
+        with open("Rectangle.json", "r") as file:
+            content = file.read()
+        self.assertEqual(content, "[]")
+
+    def test_load_from_file_with_nonexistent_file(self):
+        """
+        Test loading instances from file when file does not exist in Rectangle.
+        """
+        instances = Rectangle.load_from_file()
+        self.assertEqual(instances, [])
+
+    def test_load_from_file_with_existing_file(self):
+        """
+        Test loading instances from an existing file in Rectangle.
+        """
+        with open("Rectangle.json", "w") as file:
+            file.write('[{"id": 1, "width": 5, "height": 10, "x": 2, "y": 3}]')
+        instances = Rectangle.load_from_file()
+        expected_instance = Rectangle(5, 10, 2, 3, 1)
+        self.assertEqual(instances[0].to_dictionary(),
+                         expected_instance.to_dictionary())
 
     def tearDown(self):
         """

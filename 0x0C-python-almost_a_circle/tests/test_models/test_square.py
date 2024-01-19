@@ -78,6 +78,89 @@ class TestSquare(unittest.TestCase):
         self.assertEqual(s.to_dictionary(), {'id': 10, 'size': 10,
                                              'x': 5, 'y': 1})
 
+    def test_create_instance_with_missing_arguments(self):
+        """
+        Test creating an instance of Square with missing arguments.
+        """
+        with self.assertRaises(TypeError):
+            Square()
+
+    def test_create_instance_with_extra_argument(self):
+        """
+        Test creating an instance of Square with an extra argument.
+        """
+        with self.assertRaises(TypeError):
+            Square(1, 2, 3, 4, 5)
+
+    def test_create_instance_with_invalid_argument_types(self):
+        """
+        Test creating an instance of Square with invalid argument types.
+        """
+        with self.assertRaises(TypeError):
+            Square("1")
+
+        with self.assertRaises(TypeError):
+            Square(1, "2")
+
+        with self.assertRaises(TypeError):
+            Square(1, 2, "3")
+
+    def test_create_instance_with_negative_size(self):
+        """
+        Test creating an instance of Square with negative size.
+        """
+        with self.assertRaises(ValueError):
+            Square(1, -2)
+
+    def test_create_instance_with_negative_x_y(self):
+        """
+        Test creating an instance of Square with negative x and y values.
+        """
+        with self.assertRaises(ValueError):
+            Square(1, 2, -3)
+
+    def test_create_method_in_square(self):
+        """
+        Test create method in Square class.
+        """
+        s = Square.create(**{'id': 89, 'size': 1, 'x': 2, 'y': 3})
+        self.assertEqual(s.to_dictionary(), {'id': 89, 'size': 1,
+                                             'x': 2, 'y': 3})
+
+    def test_save_to_file_with_none(self):
+        """
+        Test saving to file with None in Square.
+        """
+        with self.assertRaises(TypeError):
+            Square(None)
+
+    def test_save_to_file_with_empty_list(self):
+        """
+        Test saving to file with an empty list in Square.
+        """
+        Square.save_to_file([])
+        with open("Square.json", "r") as file:
+            content = file.read()
+        self.assertEqual(content, "[]")
+
+    def test_load_from_file_with_nonexistent_file(self):
+        """
+        Test loading instances from file when the file does not exist in Square.
+        """
+        instances = Square.load_from_file()
+        self.assertEqual(instances, [])
+
+    def test_load_from_file_with_existing_file(self):
+        """
+        Test loading instances from an existing file in Square.
+        """
+        with open("Square.json", "w") as file:
+            file.write('[{"id": 1, "size": 5, "x": 2, "y": 3}]')
+        instances = Square.load_from_file()
+        expected_instance = Square(5, 2, 3, 1)
+        self.assertEqual(instances[0].to_dictionary(),
+                         expected_instance.to_dictionary())
+
     def tearDown(self):
         """
         Clean up by removing the created JSON file after each test.

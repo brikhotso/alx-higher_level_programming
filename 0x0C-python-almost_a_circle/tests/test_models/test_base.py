@@ -131,5 +131,25 @@ class TestCsvMethods(unittest.TestCase):
         self.assertEqual(instances, [])
 
 
+class TestFromJsonString(unittest.TestCase):
+    """
+    Test cases for the from_json_string method of Base class.
+    """
+
+    def test_from_json_string_with_valid_json(self):
+        """
+        Test converting a valid JSON string to a list of dictionaries.
+        """
+        result = Base.from_json_string('[{ "id": 89 }]')
+        self.assertEqual(result, [{"id": 89}])
+
+    def test_from_json_string_with_valid_json_returning_list(self):
+        """
+        Test converting a valid JSON string to a list.
+        """
+        result = Base.from_json_string('[{ "id": 89 }]')
+        self.assertEqual(result, [{"id": 89}])
+
+
 if __name__ == "__main__":
     unittest.main()
