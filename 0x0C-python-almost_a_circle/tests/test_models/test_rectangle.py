@@ -133,6 +133,24 @@ class TestRectangle(unittest.TestCase):
         with self.assertRaises(TypeError):
             Rectangle(1, 2, 3, 4, 5, 6)
 
+    def test_two_args(self):
+        r1 = Rectangle(10, 2)
+        r2 = Rectangle(2, 10)
+        self.assertEqual(r1.id, r2.id - 1)
+
+    def test_three_args(self):
+        r1 = Rectangle(2, 2, 4)
+        r2 = Rectangle(4, 4, 2)
+        self.assertEqual(r1.id, r2.id - 1)
+
+    def test_four_args(self):
+        r1 = Rectangle(1, 2, 3, 4)
+        r2 = Rectangle(4, 3, 2, 1)
+        self.assertEqual(r1.id, r2.id - 1)
+
+    def test_five_args(self):
+        self.assertEqual(7, Rectangle(10, 2, 0, 0, 7).id)
+
     def test_create_instance_with_invalid_argument_types(self):
         """
         Test creating an instance of Rectangle with invalid argument types.
