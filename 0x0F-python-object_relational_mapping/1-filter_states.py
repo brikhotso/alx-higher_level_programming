@@ -27,10 +27,10 @@ if __name__ == "__main__":
     )
 
     cur = db.cursor()
-    cur.execute("SELECT * FROM states WHERE name LIKE 'N%' ORDER BY states.id")
+    cur.execute("SELECT * FROM states WHERE name LIKE 'N%' ORDER BY id ASC")
+    rows = cur.fetchall()
 
-    # Iterate over the cursor directly
-    for row in cur:
+    for row in rows:
         print(row)
 
     cur.close()
