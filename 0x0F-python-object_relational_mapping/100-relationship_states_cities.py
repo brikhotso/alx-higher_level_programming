@@ -12,7 +12,7 @@ from specified database.
 from sqlalchemy import create_engine, select
 from sqlalchemy.orm import sessionmaker
 from relationship_state import State
-from relationship_city import Base ,City
+from relationship_city import Base, City
 import sys
 
 if __name__ == "__main__":
