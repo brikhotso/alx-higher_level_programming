@@ -29,11 +29,17 @@ if __name__ == "__main__":
     cur = db.cursor()
     cur.execute(
         "SELECT GROUP_CONCAT(cities.name SEPARATOR ', ') \
-         FROM cities JOIN states ON cities.state_id = states.id \
-         WHERE states.name = %s ORDER BY cities.id", (sys.argv[4],))
+         FROM cities \
+         JOIN states ON cities.state_id = states.id \
+         WHERE states.name = %s \
+         ORDER BY cities.id", (sys.argv[4],))
 
-    rows = cur.fetchone()[0]
-    print(rows)
+    row = cur.fetchone()
+
+    if row and row[0]:
+        print(row[0])
+    else:
+        print("")
 
     cur.close()
     db.close()
