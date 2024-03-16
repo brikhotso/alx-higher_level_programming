@@ -1,11 +1,11 @@
 #!/usr/bin/python3
 
 """
-Module Documentation for 100-relationship_states_cities.py:
+Module Documentation for 101-relationship_states_cities_list.py:
 
 This module contains a Python script that interacts with a MySQL database using
-SQLAlchemy ORM. Creates the State “California” with the City “San Francisco”
-from the database hbtn_0e_100_usa.
+SQLAlchemy ORM. Lists all State objects, and corresponding City objects,
+contained in the database hbtn_0e_101_usa.
 """
 
 
@@ -28,6 +28,9 @@ if __name__ == "__main__":
     Session = sessionmaker(bind=engine)
     session = Session()
 
-    session.add(City(name="San Francisco", state=State(name="California")))
-    session.commit()
+    for state in session.query(State).order_by(State.id):
+        print("{}: {}".format(state.id, state.name))
+        for city in state.cities:
+            print("    {}: {}".format(city.id, city.name))
+
     session.close()
